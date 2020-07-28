@@ -6,40 +6,34 @@ import Graphics.Gloss
 type Arrow = Complex Float
 
 -- A seed is a list of rotation speeds and their corresponding arrow's starting positions
-type Seed = [(Float, Arrow)]
+type Seed = [(Arrow, Float)]
 
-rotateArrow :: Float -> Arrow -> Arrow
-rotateArrow angle = (*) (cis angle)
+rotateArrow :: Arrow -> Float -> Arrow
+rotateArrow arrow angle = cis angle * arrow
 
 vectorize :: Arrow -> Vector
 vectorize a = (realPart a, imagPart a)
 
-updateArrow :: Float -> Float -> Arrow -> Arrow
-updateArrow t speed = rotateArrow (t * speed)
-
-updateSeed :: Float -> Seed -> [Arrow]
-updateSeed t = map (uncurry $ updateArrow t)
+updateSeed :: Seed -> Float -> [Arrow]
+updateSeed seed t = map (\(arrow, speed) -> rotateArrow arrow (speed * t)) seed
 
 -- Create a path through the arrows arranged tip to tail
 arrange :: [Arrow] -> Path
 arrange = map vectorize . scanl (+) (0 :+ 0)
 
-arrowsAt :: Float -> Seed -> Path
-arrowsAt t = arrange . updateSeed t
+arrowsAt :: Seed -> Float -> Path
+arrowsAt seed t = arrange (updateSeed seed t)
 
--- Create a path through the arranged arrows' endpoints at the given times
-trace :: [Float] -> Seed -> Path
-trace ts seed = map endpoint ts
-  where
-    endpoint t = last (arrowsAt t seed)
+endpoint :: Seed -> Float -> Vector
+endpoint seed t = last (arrowsAt seed t)
 
 drawArrows :: Seed -> Float -> Picture
 drawArrows seed seconds = Pictures [vectors, tip, trail]
   where
     t = seconds / 5
-    positions = arrowsAt t seed
-    (x, y) = last positions
+    positions = arrowsAt seed t
+    (x, y) = endpoint seed t
     -- draw stuff
     vectors = color (light aquamarine) $ line positions
-    trail = color white $ line (trace [0, 0.01 .. t] seed)
+    trail = color white $ line (map (endpoint seed) [0, 0.01 .. t])
     tip = color red $ translate x y $ circleSolid 5
