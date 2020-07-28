@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import Arrow
+import Graphics.Gloss
 
 main :: IO ()
-main = someFunc
+main = animate FullScreen (greyN 0.05) (drawArrows inits)

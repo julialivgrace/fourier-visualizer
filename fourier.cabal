@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 019ade76a0fb3bf5e5b1ed1aec5ac3fae437152896b9b75a6e6bacb3dc7e616c
+-- hash: ef74b0f31c5cac1c91647bd1f0d894b247fc1c1318a6eb83a1e157d337fefb65
 
 name:           fourier
 version:        0.1.0.0
@@ -27,7 +27,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Arrow
   other-modules:
       Paths_fourier
   hs-source-dirs:
