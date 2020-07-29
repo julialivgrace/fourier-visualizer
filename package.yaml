@@ -22,6 +22,7 @@ description:         Please see the README on GitHub at <https://github.com/juli
 dependencies:
 - base >= 4.7 && < 5
 - gloss
+- complex-integrate
 
 library:
   source-dirs: src

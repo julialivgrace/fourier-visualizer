@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: complex-integrate-1.0.0@sha256:9fb6fe064ec025238edfb6ec11c46a90620ee678637110647c2d6b4934fc0b26,874
+    pantry-tree:
+      size: 274
+      sha256: c88971a53e65e521bfa72fe7f9945b2959dc9117a1dbfdb690cb4faafc195e0b
+  original:
+    hackage: complex-integrate-1.0.0@sha256:9fb6fe064ec025238edfb6ec11c46a90620ee678637110647c2d6b4934fc0b26,874
 snapshots:
 - completed:
     size: 531932
