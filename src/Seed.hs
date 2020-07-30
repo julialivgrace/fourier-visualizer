@@ -1,4 +1,10 @@
-module Seed where
+module Seed
+  ( Seed
+  , createSeed
+  , arrowsAt
+  , drawSeed
+  )
+where
 
 import           Arrow                          ( Arrow
                                                 , arrange
