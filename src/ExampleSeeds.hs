@@ -1,7 +1,9 @@
 module ExampleSeeds where
 
 import           Data.Complex
-import           Seed         (Seed, createSeed)
+import           Seed                           ( Seed
+                                                , createSeed
+                                                )
 
 circleSeed :: Seed
 circleSeed = createSeed f n spaceScale timeScale
@@ -22,12 +24,12 @@ lineSeed = createSeed f n spaceScale timeScale
 rodFunction :: Float -> Complex Float
 rodFunction x | x < 0.5   = -1
               | x > 0.5   = 1
-              | otherwise = 0.5
+              | otherwise = 0
 
 rodSeed :: Seed
 rodSeed = createSeed rodFunction n spaceScale timeScale
  where
-  n          = 51
+  n          = 501
   spaceScale = 500
   timeScale  = 0.1
 
