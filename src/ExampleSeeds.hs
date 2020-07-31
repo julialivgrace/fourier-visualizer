@@ -57,11 +57,8 @@ cardioidSeed = createSeed (cardioid 100 . (*) (2 * pi))
 lissajous :: (RealFloat a) => a -> a -> a -> Complex a
 lissajous a b t = cos (a * t) :+ sin (b * t)
 
-infinity :: (RealFloat a) => a -> Complex a
-infinity = lissajous 1 2
-
 infinitySeed :: Seed
-infinitySeed = createSeed (infinity . (*) (2 * pi))
+infinitySeed = createSeed (lissajous 1 2 . (*) (2 * pi))
                           n
                           spaceScale
                           timeScale
@@ -70,4 +67,34 @@ infinitySeed = createSeed (infinity . (*) (2 * pi))
   n           = 51
   spaceScale  = 300
   timeScale   = 0.1
-  trailLength = 0.9
+  trailLength = 1
+
+parabolaSeed :: Seed
+parabolaSeed = createSeed (lissajous 2 1 . (*) (2 * pi))
+                          n
+                          spaceScale
+                          timeScale
+                          trailLength
+ where
+  n           = 51
+  spaceScale  = 300
+  timeScale   = 0.1
+  trailLength = 1
+
+heart :: (RealFloat a) => a -> Complex a
+heart t = x t :+ y t
+ where
+  x t = 16 * sin t ^ 3
+  y t = 13 * cos t - 5 * cos (2 * t) - 2 * cos (3 * t) - cos (4 * t)
+
+heartSeed :: Seed
+heartSeed = createSeed (heart . (*) (2 * pi))
+                       n
+                       spaceScale
+                       timeScale
+                       trailLength
+ where
+  n           = 21
+  spaceScale  = 20
+  timeScale   = 0.1
+  trailLength = 1
