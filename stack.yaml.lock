@@ -7,13 +7,13 @@ packages:
 - completed:
     hackage: complex-integrate-1.0.0@sha256:9fb6fe064ec025238edfb6ec11c46a90620ee678637110647c2d6b4934fc0b26,874
     pantry-tree:
-      size: 274
       sha256: c88971a53e65e521bfa72fe7f9945b2959dc9117a1dbfdb690cb4faafc195e0b
+      size: 274
   original:
     hackage: complex-integrate-1.0.0@sha256:9fb6fe064ec025238edfb6ec11c46a90620ee678637110647c2d6b4934fc0b26,874
 snapshots:
 - completed:
-    size: 531932
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/7.yaml
-    sha256: 96ceeddd4fd68b2d430f7695a12eadefee760b7034c88c75d99d0f380f483068
-  original: lts-16.7
+    sha256: 238fa745b64f91184f9aa518fe04bdde6552533d169b0da5256670df83a0f1a9
+    size: 721141
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/44.yaml
+  original: lts-22.44
